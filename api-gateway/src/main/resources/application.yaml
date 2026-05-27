@@ -7,11 +7,11 @@ spring:
         webflux:
           routes:
             - id: order-service-route
-              uri: lb:/ORDER-SERVICE
+              uri: lb://ORDER-SERVICE
               predicates:
                 - Path=/api/orders/**
             - id: product-service-route
-              uri: lb:/INVENTORY-SERVICE
+              uri: lb://INVENTORY-SERVICE
               predicates:
                 - Path=/api/inventory/**
 eureka:
