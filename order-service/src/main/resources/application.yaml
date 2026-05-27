@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: order-service
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 8671
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+
+server:
+  port: 8081

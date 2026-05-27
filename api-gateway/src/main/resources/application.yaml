@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: order-service-route
+              uri: lb:/ORDER-SERVICE
+              predicates:
+                - Path=/api/orders/**
+            - id: product-service-route
+              uri: lb:/INVENTORY-SERVICE
+              predicates:
+                - Path=/api/inventory/**
+eureka:
+  instance:
+    hostname: localhost
+    port: 8671
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+
+server:
+  port: 8080
